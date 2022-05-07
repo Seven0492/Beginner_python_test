@@ -10,7 +10,7 @@ def main():
     pass
 
 
-global y_or_n
+# global y_or_n
 
 
 def second():
