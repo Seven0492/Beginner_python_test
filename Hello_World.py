@@ -1,10 +1,6 @@
 def main():
     print("\"Hello World!\"" + "\n")
 
-    # liist = "[0] second [1] Nothing" liiist = liist.split() print(liiist[0] + liiist[1] + "\n" + liiist[2] + liist[
-    # 3] + "\n") function = input("Within these local functions, which do you want to execute? (number or 'the final
-    # number' if " "you want to end the main function)): ") print(function + "this is a test for now")
-
     is_exit = input("Do you want to continue testing or end it here? (True or False): ")
     print("\n")
 
