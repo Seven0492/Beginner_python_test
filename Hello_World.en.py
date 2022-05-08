@@ -4,7 +4,7 @@ def main():
     is_exit = input("Do you want to continue testing or end it here? (True or False): ")
     print("\n")
 
-    if is_exit is False:
+    if is_exit is False or is_exit.lower() == "false":
         exit(1)
 
     pass
@@ -25,14 +25,13 @@ def second():
     else:
         y_or_n = str(input("\nYour name is " + name + ", correct? (y or n): "))
 
-    if len(y_or_n) != 1 and len(y_or_n) > 3:
-        print("You said it was neither 'y' nor 'n', but '" + y_or_n + "', this answer isn't supported...\n\n")
-        return False
-
     if y_or_n == "y" or y_or_n == "Y" or y_or_n.lower == "yes":
         return True
 
     elif y_or_n == "n" or y_or_n == "N" or y_or_n.lower == "no":
+        return False
+    else:
+        print("You said it was neither 'y' nor 'n', but '" + y_or_n + "', this answer isn't supported...\n\n")
         return False
 
     pass
