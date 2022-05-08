@@ -22,7 +22,7 @@ def second():
         return False
 
     else:
-        y_or_n = str(input("\nTon nom est " + name + ", correcte? (y or n): "))
+        y_or_n = str(input("\nTon nom est " + name + ", correcte? (o or n): "))
 
     if y_or_n.lower() == "o" or y_or_n.lower() == "oui":
         return True
