@@ -64,7 +64,7 @@ def calculator_menu():
 
 
 def calculator_choice():
-    choice = input(bcolors.Yellow + "Make your choice: " + bcolors.RESET)
+    choice = input(bcolors.Yellow + "Make your choice (ex: 1 or 2): " + bcolors.RESET)
 
     print("\n")
 
