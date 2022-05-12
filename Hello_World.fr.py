@@ -2,7 +2,7 @@ class bcolors:
     Green = '\033[92m'  # GREEN
     Yellow = '\033[93m'  # YELLOW
     Red = '\033[91m'  # RED
-    LIGHT_BLUE = "\033[1;34m"  # Blue
+    LIGHT_BLUE = "\033[1;34m"  # Light Blue
     RESET = '\033[0m'  # RESET COLOR
 
 
@@ -19,10 +19,7 @@ def main():
     pass
 
 
-# global y_or_n
-
-
-def second():
+def checks():
     print(bcolors.Green + "Hallo Monde!" + bcolors.LIGHT_BLUE
           + " (pour la deuxième fois, tu as entrer dans un monde dans un autre monde)\n" + bcolors.RESET)
 
@@ -34,35 +31,54 @@ def second():
               + bcolors.RESET)
         return False
 
-    else:
-        y_or_n = str(input(bcolors.Yellow + "\nTon nom est " + bcolors.Green + name + bcolors.Yellow + ", correcte?"
-                           + bcolors.LIGHT_BLUE + " (o or n): " + bcolors.RESET))
+    y_or_n = str(input(bcolors.Yellow + "\nTon nom est " + bcolors.Green + name + bcolors.Yellow + ", correcte?"
+                       + bcolors.LIGHT_BLUE + " (o or n): " + bcolors.RESET))
 
     if y_or_n.lower() == "o" or y_or_n.lower() == "oui":
         return True
 
-    elif y_or_n.lower() == "n" or y_or_n.lower() == "non":
-        return False
-    else:
-        print(bcolors.Yellow + "Ce que tu as taper n'est pas 'o' ni 'n', mais '" + bcolors.Green + y_or_n
-              + bcolors.Yellow + "', cette réponse n'est pas supporter...\n\n")
+    if y_or_n.lower() == "n" or y_or_n.lower() == "non":
         return False
 
+    print(bcolors.Yellow + "Ce que tu as taper n'est pas 'o' ni 'n', mais '" + bcolors.Green + y_or_n
+          + bcolors.Yellow + "', cette réponse n'est pas supporter...\n\n")
+    return False
+
     pass
+
+
+global menu_choices
+# Ajoute le nombre des options qu'and tu en rajoutes ici, ou sa va buggés
+menu_choices = [1]
 
 
 def calculator_menu():
     print(bcolors.Yellow
           + "Sens toi chanceux(se), tu peux choisir entre 1 type de calcul avec deux nombres, fais ton choix")
 
-    print(bcolors.LIGHT_BLUE + "1." + bcolors.Yellow + " Addition")
+    print(bcolors.LIGHT_BLUE + "1." + bcolors.Yellow + " Addition" + bcolors.RESET)
 
-    choice = input("Make your choice: " + bcolors.RESET)
+    calculator_choice()
+    pass
+
+
+def calculator_choice():
+    choice = input(bcolors.Yellow + "Fais ton choix: " + bcolors.RESET)
 
     print("\n")
 
-    if choice == "1":
-        calculator_add()
+    choice_location = int(choice) - 1
+
+    if int(choice) == menu_choices[choice_location]:
+        if choice_location == 0:
+            calculator_add()
+            return True
+        if choice_location == 1:
+            # Pout être étendue dessus à un autre temps
+            return False
+
+    print("Ce que tu a tapé n'est pas un option")
+    return False
     pass
 
 
@@ -82,11 +98,11 @@ def calculator_add():
 
 main()
 
-if second() is True:
+if checks() is True:
     print(bcolors.Yellow + "\nTout à marcher comme je l'attendais, comme je souhaitait, merveilleux\n" + bcolors.RESET)
     pass
 
-elif second() is False:
+elif checks() is False:
     print("\n" + "Quelque chose n'a pas marcher... Ou tu a juste dit non" + "\n")
     exit(0)
 

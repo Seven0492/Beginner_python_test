@@ -1,62 +1,112 @@
-def main():
-    print("\"Hello World!\"\n")
+class bcolors:
+    Green = '\033[92m'  # GREEN
+    Yellow = '\033[93m'  # YELLOW
+    Red = '\033[91m'  # RED
+    LIGHT_BLUE = "\033[1;34m"  # Light Blue
+    RESET = '\033[0m'  # RESET COLOR
 
-    is_exit = input("Do you want to continue testing or end it here? (True or False): ")
+
+def main():
+    print("\"" + bcolors.Green + "Hello World!" + bcolors.RESET + "\"\n")
+
+    is_exit = input(bcolors.Yellow + "Do you want to continue or end it here?"
+                    + bcolors.LIGHT_BLUE + " (True or False): " + bcolors.RESET)
     print("\n")
 
-    if is_exit is False or is_exit.lower() == "false":
+    if is_exit is False:
         exit(1)
 
     pass
 
 
-# global y_or_n
+def checks():
+    print(bcolors.Green + "Hello World!" + bcolors.LIGHT_BLUE
+          + " (For the second time, you entered a world within a world)\n" + bcolors.RESET)
 
-
-def second():
-    print("Hello World! (For the second time, you have entered a world within a world)\n")
-    name = input("Can you state your name for the program?: ")
+    name = input(bcolors.Yellow + "Can you type your name for the program?: " + bcolors.RESET)
 
     if name is None:
-        print("You have to type something! So for your laziness you now have to start the program again if you want "
-              "to continue")
+        print(bcolors.Yellow
+              + "You have to type something! So for your laziness,"
+              + " you are gonna have to restart the program to continue!"
+              + bcolors.RESET)
         return False
 
-    else:
-        y_or_n = str(input("\nYour name is " + name + ", correct? (y or n): "))
+    y_or_n = str(input(bcolors.Yellow + "\nYour name is " + bcolors.Green + name + bcolors.Yellow + ", correct?"
+                       + bcolors.LIGHT_BLUE + " (y or n): " + bcolors.RESET))
 
-    if y_or_n == "y" or y_or_n == "Y" or y_or_n.lower == "yes":
+    if y_or_n.lower() == "y" or y_or_n.lower() == "yes":
         return True
 
-    elif y_or_n == "n" or y_or_n == "N" or y_or_n.lower == "no":
+    if y_or_n.lower() == "n" or y_or_n.lower() == "non":
         return False
-    else:
-        print("You said it was neither 'y' nor 'n', but '" + y_or_n + "', this answer isn't supported...\n\n")
-        return False
+
+    print(bcolors.Yellow + "What you typed wasn't 'y' nor 'n', but '" + bcolors.Green + y_or_n
+          + bcolors.Yellow + "', this answer isn't supported...\n\n")
+    return False
 
     pass
 
 
+global menu_choices
+# Add the number of options when you add them, here, or it isn't going to work
+menu_choices = [1]
+
+
+def calculator_menu():
+    print(bcolors.Yellow
+          + "Fell yourself lucky, you can choose between 1 type of calculation with two numbers, make your choice")
+
+    print(bcolors.LIGHT_BLUE + "1." + bcolors.Yellow + " Addition" + bcolors.RESET)
+
+    calculator_choice()
+    pass
+
+
+def calculator_choice():
+    choice = input(bcolors.Yellow + "Make your choice: " + bcolors.RESET)
+
+    print("\n")
+
+    choice_location = int(choice) - 1
+
+    if int(choice) == menu_choices[choice_location]:
+        if choice_location == 0:
+            calculator_add()
+            return True
+        if choice_location == 1:
+            # Pout être étendue dessus à un autre temps
+            return True
+
+    print("What you typed wasn't an option")
+    return False
+    pass
+
+
 def calculator_add():
-    number1 = input("This is a basic calculator test which will ask you for two numbers and add them together \n"
-                    "First number: ")
-    number2 = input("Second number: ")
+    number1 = input(bcolors.Yellow
+                    + "This is a basic calculator test which will ask you for two numbers and add them together \n"
+                    + "First number: ")
+
+    number2 = input("Second number: " + bcolors.RESET)
+
     result = float(number1) + float(number2)
 
     print(result)
+    return result
     pass
 
 
 main()
 
-if second() is True:
-    print("\n" + "Everything worked as I expected, as I hoped, marvelous" + "\n")
+if checks() is True:
+    print(bcolors.Yellow + "\nEverything worked like I hoped, great\n" + bcolors.RESET)
     pass
 
-elif second() is False:
-    print("\n" + "Something probably went wrong... Or you just said no" + "\n")
+elif checks() is False:
+    print("\n" + "Something didn't work... Or you just said no" + "\n")
     exit(0)
 
-calculator_add()
+calculator_menu()
 
 exit(1)
